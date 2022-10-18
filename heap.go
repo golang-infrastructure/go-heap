@@ -144,6 +144,7 @@ func (x *Heap[T]) up(index int) {
 }
 
 // 把给定下标的节点往下沉
+// TODO 2022-10-18 23:52:37 考虑下表int溢出的问题
 func (x *Heap[T]) down(parentIndex, n int) bool {
 	currentParentIndex := parentIndex
 	for {
@@ -156,9 +157,7 @@ func (x *Heap[T]) down(parentIndex, n int) bool {
 			if childIndex >= n {
 				break
 			}
-			if minChildIndex == -1 {
-				minChildIndex = childIndex
-			} else if x.options.Comparator(x.heapSlice[childIndex], x.heapSlice[minChildIndex]) < 0 {
+			if x.options.Comparator(x.heapSlice[childIndex], x.heapSlice[minChildIndex]) < 0 {
 				minChildIndex = childIndex
 			}
 		}
