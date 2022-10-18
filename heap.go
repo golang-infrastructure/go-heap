@@ -175,9 +175,7 @@ func (x *Heap[T]) down(parentIndex, n int) bool {
 
 // 交换两个下标位置的元素
 func (x *Heap[T]) swap(i, j int) {
-	t := x.heapSlice[i]
-	x.heapSlice[i] = x.heapSlice[j]
-	x.heapSlice[j] = t
+	x.heapSlice[i], x.heapSlice[j] = x.heapSlice[j], x.heapSlice[i]
 }
 
 // ------------------------------------------------ ---------------------------------------------------------------------
