@@ -3,7 +3,7 @@
 # Install 
 
 ```bash
-go get github.com/CC11001100/go-heap
+go get github.com/golang-infrastructure/go-heap
 ```
 
 # Example
@@ -12,7 +12,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/CC11001100/go-heap"
+	"github.com/golang-infrastructure/go-heap"
 	"math/rand"
 )
 

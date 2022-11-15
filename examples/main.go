@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/CC11001100/go-heap"
+	"github.com/golang-infrastructure/go-heap"
 	"math/rand"
 )
 
