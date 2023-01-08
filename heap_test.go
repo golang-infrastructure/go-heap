@@ -106,3 +106,19 @@ func TestHeap_ExportDotLanguage(t *testing.T) {
 	}
 
 }
+
+func TestHeap_MarshalJSON(t *testing.T) {
+
+	options := &Options[int]{
+		Comparator: IntComparator(),
+		Ary:        10,
+	}
+	heap := NewWithOptions(options)
+	for i := 0; i < 20; i++ {
+		n := rand.Int() % 1000
+		heap.Push(n)
+	}
+
+	t.Log(heap.MarshalJSON())
+
+}

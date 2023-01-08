@@ -1,6 +1,7 @@
 package heap
 
 import (
+	"encoding/json"
 	"fmt"
 	"strings"
 )
@@ -16,6 +17,9 @@ type Heap[T any] struct {
 }
 
 var _ Interface[any] = &Heap[any]{}
+
+var _ json.Unmarshaler = &Heap[any]{}
+var _ json.Marshaler = &Heap[any]{}
 
 func New[T any](comparator Comparator[T]) *Heap[T] {
 	return NewWithOptions[T](&Options[T]{
@@ -206,5 +210,20 @@ func (x *Heap[T]) ExportDotLanguage() string {
 //func (x *Heap[T]) Show() {
 //
 //}
+
+// ------------------------------------------------- ------------------------------------------------------------------------
+
+func (x *Heap[T]) MarshalJSON() ([]byte, error) {
+	heapMap := make(map[string]any)
+	heapMap["heapSlice"] = x.heapSlice
+	heapMap["heapSize"] = x.heapSize
+	heapMap["options"] = x.options
+	return json.Marshal(heapMap)
+}
+
+func (x *Heap[T]) UnmarshalJSON(b []byte) error {
+	// TODO
+	return nil
+}
 
 // ------------------------------------------------ ---------------------------------------------------------------------

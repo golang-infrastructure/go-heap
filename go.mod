@@ -1,4 +1,4 @@
-module github.com/CC11001100/go-heap
+module github.com/golang-infrastructure/go-heap
 
 go 1.19
 
